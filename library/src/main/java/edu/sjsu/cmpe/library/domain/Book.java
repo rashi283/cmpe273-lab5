@@ -1,6 +1,7 @@
 package edu.sjsu.cmpe.library.domain;
 
 import java.net.URL;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.validation.constraints.NotNull;
 
@@ -48,6 +49,17 @@ public class Book {
     @NotEmpty
     private String category;
 
+    private static ConcurrentHashMap<Long, Book> newBookHashMap;
+    
+	public static ConcurrentHashMap<Long, Book> getNewBookHashMap() {
+		return newBookHashMap;
+	}
+
+	public static void setNewBookHashMap(
+			ConcurrentHashMap<Long, Book> newBookHashMap) {
+		Book.newBookHashMap = newBookHashMap;
+	}
+    
     private URL coverimage;
 
     /** Default is 'available' */
